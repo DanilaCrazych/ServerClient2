@@ -2,7 +2,7 @@ import java.net.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-class ClientSomthing {
+class ClientSomthing2 {
 
     private Socket socket;
     private BufferedReader in;
@@ -14,7 +14,7 @@ class ClientSomthing {
     private Date time;
     private String dtime;
     private SimpleDateFormat dt1;
-    public ClientSomthing(String addr, int port) {
+    public ClientSomthing2(String addr, int port) {
         this.addr = addr;
         this.port = port;
         try {
@@ -30,7 +30,7 @@ class ClientSomthing {
             new ReadMsg().start();
             new WriteMsg().start();
         } catch (IOException e) {
-            ClientSomthing.this.downService();
+            ClientSomthing2.this.downService();
         }
     }
     private void pressNickname() {
@@ -62,13 +62,13 @@ class ClientSomthing {
                 while (true) {
                     str = in.readLine();
                     if (str.equals("Стоп")) {
-                        ClientSomthing.this.downService();
+                        ClientSomthing2.this.downService();
                         break;
                     }
                     System.out.println(str);
                 }
             } catch (IOException e) {
-                ClientSomthing.this.downService();
+                ClientSomthing2.this.downService();
             }
         }
     }
@@ -85,14 +85,14 @@ class ClientSomthing {
                     userWord = inputUser.readLine();
                     if (userWord.equals("Стоп")) {
                         out.write("Стоп" + "\n");
-                        ClientSomthing.this.downService();
+                        ClientSomthing2.this.downService();
                         break;
                     } else {
                         out.write("(" + dtime + ") " + nickname + ": " + userWord + "\n");
                     }
                     out.flush();
                 } catch (IOException e) {
-                    ClientSomthing.this.downService();
+                    ClientSomthing2.this.downService();
 
                 }
 
@@ -101,7 +101,7 @@ class ClientSomthing {
     }
 }
 
-public class Client {
+public class Client2 {
 
     public static String ipAddr = "localhost";
     public static int port = 8080;
